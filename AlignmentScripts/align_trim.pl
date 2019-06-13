@@ -77,17 +77,17 @@ sub getReference
         foreach $file (@Files)
         {
             ($Ext[$i]) = $file =~ /(\.[^.]+)$/;
-			if ($Ext[$i] eq "")
-			{
-				$i++;
-			}
-            elsif ((($Ext[$i] eq ".fasta") || ($Ext[$i] eq ".fa")) && ($found == 0))
-            {
-                $fasta = $file;
-                $found = 1;
-                print "\n\tUsing genome FASTA file $GenomeDir/$fasta\n";
-            }
-            else{$i++};
+		if ($Ext[$i] eq "")
+		{
+			$i++;
+		}
+            	elsif ((($Ext[$i] eq ".fasta") || ($Ext[$i] eq ".fa")) && ($found == 0))
+            	{
+                	$fasta = $file;
+                	$found = 1;
+                	print "\n\tUsing genome FASTA file $GenomeDir/$fasta\n";
+            	}
+            	else{$i++};
         }
     }
     else {die "\n\t**Reference directory not found**\n";}

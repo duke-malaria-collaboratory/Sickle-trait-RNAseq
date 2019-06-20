@@ -1,6 +1,5 @@
-library("Rsubread")
-library("limma")
-library("edgeR")
+packages <- c("Rsubread", "limma", "edgeR")
+lapply(packages, library, character.only =TRUE)
 
 out_dir <- "/gpfs/fs1/data/taylorlab/HbAS/readCounts/working/3D7"
 bam_dir <- "/gpfs/fs1/data/taylorlab/HbAS/readCounts/bamFiles/3D7"

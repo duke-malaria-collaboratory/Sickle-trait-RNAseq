@@ -77,17 +77,17 @@ sub getReference
         foreach $file (@Files)
         {
             ($Ext[$i]) = $file =~ /(\.[^.]+)$/;
-			if ($Ext[$i] eq "")
-			{
-				$i++;
-			}
-            elsif ((($Ext[$i] eq ".fasta") || ($Ext[$i] eq ".fa")) && ($found == 0))
-            {
-                $fasta = $file;
-                $found = 1;
-                print "\n\tUsing genome FASTA file $GenomeDir/$fasta\n";
-            }
-            else{$i++};
+		if ($Ext[$i] eq "")
+		{
+			$i++;
+		}
+            	elsif ((($Ext[$i] eq ".fasta") || ($Ext[$i] eq ".fa")) && ($found == 0))
+            	{
+                	$fasta = $file;
+                	$found = 1;
+                	print "\n\tUsing genome FASTA file $GenomeDir/$fasta\n";
+            	}
+            	else{$i++};
         }
     }
     else {die "\n\t**Reference directory not found**\n";}
@@ -198,7 +198,7 @@ sub QCreads
 
     for ($i = 0; $i < $size; $i++)
     {
-#        system "fastqc -o $outDir/fastqc_in -f $format $read1Dir/$Reads1[$i] $read2Dir/$Reads2[$i]";
+        system "fastqc -o $outDir/fastqc_in -f $format $read1Dir/$Reads1[$i] $read2Dir/$Reads2[$i]";
     }
 }
 ############################################################
@@ -270,27 +270,24 @@ sub align
         my $read1 = "$read1Dir/$prefix" . ".1.fastq.gz";
         my $read2 = "$read2Dir/$prefix" . ".2.fastq.gz";
 
-		system "STAR --runMode alignReads --genomeDir $Hs --readFilesIn $read1 $read2 --readFilesCommand zcat --outSAMtype BAM SortedByCoordinate --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1000000 --outFilterMismatchNmax 3 --outReadsUnmapped Fastx --outFileNamePrefix $out/STAR_out/Hs_$prefix.";
+	system "STAR --runMode alignReads --genomeDir $Hs --readFilesIn $read1 $read2 --readFilesCommand zcat --outSAMtype BAM Unsorted --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1000000 --outFilterMismatchNmax 3 --outReadsUnmapped Fastx --outFileNamePrefix $out/STAR_out/Hs_$prefix.";
 
-		system "rm $out/STAR_out/Hs_$prefix.Aligned.sortedByCoord.out.bam";
+	system "rm $out/STAR_out/Hs_$prefix.Aligned.out.bam";
 		
-		system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate1 $out/HsUnmappedReads/1/$prefix.1.fastq";
+	system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate1 $out/HsUnmappedReads/1/$prefix.1.fastq";
 
-		system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate2 $out/HsUnmappedReads/2/$prefix.2.fastq";
+	system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate2 $out/HsUnmappedReads/2/$prefix.2.fastq";
 		
-		system "gzip $out/HsUnmappedReads/1/$prefix.1.fastq";
+	system "gzip $out/HsUnmappedReads/1/$prefix.1.fastq";
 		
-		system "gzip $out/HsUnmappedReads/2/$prefix.2.fastq";
+	system "gzip $out/HsUnmappedReads/2/$prefix.2.fastq";
 		
-		my $pfalReads1 = "$out/HsUnmappedReads/1/$prefix.1.fastq.gz";
-		my $pfalReads2 = "$out/HsUnmappedReads/2/$prefix.2.fastq.gz";
+	my $pfalReads1 = "$out/HsUnmappedReads/1/$prefix.1.fastq.gz";
+	my $pfalReads2 = "$out/HsUnmappedReads/2/$prefix.2.fastq.gz";
 
         system "STAR --runMode alignReads --genomeDir $GenomeDir --readFilesIn $pfalReads1 $pfalReads2 --readFilesCommand zcat --outSAMtype BAM SortedByCoordinate --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1200 --outFilterScoreMinOverLread 0 --outFilterMatchNminOverLread 0  --outFilterMatchNmin 30 --outFilterMismatchNmax 999 --outFileNamePrefix $out/STAR_out/Pf_$prefix.";
 
-        system "mv  $out/STAR_out/Pf_$prefix.Aligned.sortedByCoord.out.bam $out/sort_bam/$prefix.sort.bam";
-        
-        if (-e "$out/sort_bam/$prefix.sort.bam")
-        {system "rm $out/BAM/$prefix.bam";}
+        system "mv $out/STAR_out/Pf_$prefix.Aligned.sortedByCoord.out.bam $out/sort_bam/$prefix.sort.bam";
         
         system "cuffquant -q -o $out/cuffquant $GTF $out/sort_bam/$prefix.sort.bam";
         

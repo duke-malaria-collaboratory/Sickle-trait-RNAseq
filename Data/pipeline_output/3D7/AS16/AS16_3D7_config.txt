@@ -1,0 +1,10 @@
+data_file = Pf/3D7/AS16/AS16_3D7_data.tsv
+annotation_file = Pf/3D7/AS16/AS16_3D7_annot.tsv
+output_dir = Pf/3D7/AS16/results
+num_proc = 2
+verbose = True
+
+[dlxjtk_arguments]
+periods = 45, 48
+num_reg = 10000
+num_per = 1000

@@ -1,0 +1,8 @@
+# Run Manifest for Pf/3D7/AA13/results
+run_step	run_input	run_output
+dlxjtk	Pf/3D7/AA13/test.tsv	/Users/joe/Python/timeSeries/pipeline_code/Pf/3D7/AA13/results/node_finding_190626155817
+dlxjtk	Pf/3D7/AA13/test.tsv	/Users/joe/Python/timeSeries/pipeline_code/Pf/3D7/AA13/results/node_finding_190626160057
+dlxjtk	Pf/3D7/AA13/AA13_3D7_data.tsv	/Users/joe/Python/timeSeries/pipeline_code/Pf/3D7/AA13/results/node_finding_190626160249
+dlxjtk	Pf/3D7/AA13/AA13_3D7_data.tsv	/Users/joe/Python/timeSeries/pipeline_code/Pf/3D7/AA13/results/node_finding_190627132146
+dlxjtk	Pf/3D7/AA13/AA13_3D7_data.tsv	/Users/joe/Python/timeSeries/pipeline_code/Pf/3D7/AA13/results/node_finding_190628135304
+dlxjtk	Pf/3D7/AA13/AA13_3D7_data.tsv	/Users/joe/Python/timeSeries/pipeline_code/Pf/3D7/AA13/results/node_finding_190702130826

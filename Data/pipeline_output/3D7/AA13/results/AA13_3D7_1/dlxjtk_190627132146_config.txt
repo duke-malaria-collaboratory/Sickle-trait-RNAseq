@@ -1,0 +1,14 @@
+periods = '"42, 45"'
+num_reg = 10000
+num_per = 1000
+log_trans = True
+data_file = Pf/3D7/AA13/AA13_3D7_data.tsv
+output_dir = Pf/3D7/AA13/results/node_finding_190627132146
+annotation_file = Pf/3D7/AA13/AA13_3D7_annot.tsv
+dl_output_file = Pf/3D7/AA13/results/node_finding_190627132146/pydl_results.tsv
+jtk_output_file = Pf/3D7/AA13/results/node_finding_190627132146/pyjtk_results.tsv
+dlxjtk_output_file = Pf/3D7/AA13/results/node_finding_190627132146/dlxjtk_results.tsv
+gene_list_file = Pf/3D7/AA13/results/node_finding_190627132146/gene_list.tsv
+verbose = True
+num_proc = 2
+dlxjtk_cutoff = None

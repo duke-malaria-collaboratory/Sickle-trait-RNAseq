@@ -1,0 +1,3 @@
+# Run Manifest for /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AA_FUP_results
+run_step	run_input	run_output
+dlxjtk	/Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Data/AA_FUP_means_filtered.tsv	/Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AA_FUP_results/node_finding_190905125539

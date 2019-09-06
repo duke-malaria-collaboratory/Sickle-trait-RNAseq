@@ -1,0 +1,14 @@
+periods = '"45, 48, 51"'
+dlxjtk_cutoff = 10
+num_reg = 1000000
+num_per = 10000
+data_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Data/AS_3D7_means_filtered.tsv
+output_dir = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AS_3D7_results/node_finding_190905113406
+annotation_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Data/empty_annot.tsv
+dl_output_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AS_3D7_results/node_finding_190905113406/pydl_results.tsv
+jtk_output_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AS_3D7_results/node_finding_190905113406/pyjtk_results.tsv
+dlxjtk_output_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AS_3D7_results/node_finding_190905113406/dlxjtk_results.tsv
+gene_list_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AS_3D7_results/node_finding_190905113406/gene_list.tsv
+verbose = True
+num_proc = 8
+log_trans = True

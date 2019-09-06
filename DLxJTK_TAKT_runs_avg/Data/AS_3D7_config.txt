@@ -1,0 +1,10 @@
+data_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Data/AS_3D7_means_filtered.tsv
+annotation_file = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Data/empty_annot.tsv
+output_dir = /Users/haase-admin/Desktop/moseley/DLxJTK_TAKT_runs_avg/Results/AS_3D7_results
+num_proc = 8
+verbose = True
+[dlxjtk_arguments]
+    periods = 45, 48, 51
+    dlxjtk_cutoff = 10
+    num_reg = 1000000
+    num_per = 10000

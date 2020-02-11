@@ -1,0 +1,3 @@
+# Run Manifest for /Users/haase-admin/Desktop/moseley/sickle-scripts/AA17_FUP_Results
+run_step	run_input	run_output
+dlxjtk	/Users/haase-admin/Desktop/moseley/sickle-scripts/AA17_FUP_ts_filtered.tsv	/Users/haase-admin/Desktop/moseley/sickle-scripts/AA17_FUP_Results/node_finding_190716153222

@@ -1,0 +1,3 @@
+# Run Manifest for /Users/taylorlab/Documents/TaylorLab/jws48/Jupyter/Periodicity/Results_3-1/AS18_FUP_results
+run_step	run_input	run_output
+dlxjtk	/Users/taylorlab/Documents/TaylorLab/jws48/Jupyter/Periodicity/data/AS18_FUP.tsv	/Users/taylorlab/Documents/TaylorLab/jws48/Jupyter/Periodicity/Results_3-1/AS18_FUP_results/node_finding_200302143228

@@ -2,4 +2,5 @@
 venv/
 Goals.txt
 .ipynb
-.ipynb_checkpoint/
+.ipynb_checkpoints/
+.idea/

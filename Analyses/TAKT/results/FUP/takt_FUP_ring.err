@@ -1,0 +1,3 @@
+Python 3.8.1
+/hpc/group/haaselab/rcm49/sickle-trait-rnaseq/TAKT/python/utilities.py:19: RuntimeWarning: invalid value encountered in true_divide
+  ts_array = ts_array / np.std(ts_array)

@@ -1,3 +1,0 @@
-# Run Manifest for /Users/taylorlab/Documents/TaylorLab/jws48/Jupyter/Periodicity/Results_3-1/AA17_3D7_results
-run_step	run_input	run_output
-dlxjtk	/Users/taylorlab/Documents/TaylorLab/jws48/Jupyter/Periodicity/data/AA17_3D7.tsv	/Users/taylorlab/Documents/TaylorLab/jws48/Jupyter/Periodicity/Results_3-1/AA17_3D7_results/node_finding_200302112823

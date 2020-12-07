@@ -270,22 +270,24 @@ sub align
         my $read1 = "$read1Dir/$prefix" . ".1.fastq.gz";
         my $read2 = "$read2Dir/$prefix" . ".2.fastq.gz";
 
-	system "STAR --runMode alignReads --genomeDir $Hs --readFilesIn $read1 $read2 --readFilesCommand zcat --outSAMtype BAM Unsorted --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1000000 --outFilterMismatchNmax 12 --outReadsUnmapped Fastx --outFileNamePrefix $out/STAR_out/Hs_$prefix.";
+		system "STAR --runMode alignReads --genomeDir $Hs --readFilesIn $read1 $read2 --readFilesCommand zcat --outSAMtype BAM Unsorted --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1000000 --outFilterMismatchNmax 12 --outReadsUnmapped Fastx --outFileNamePrefix $out/STAR_out/Hs_$prefix.";
 
-#	system "rm $out/STAR_out/Hs_$prefix.Aligned.out.bam";
+		system "rm $out/STAR_out/Hs_$prefix.Aligned.out.bam";
 		
-	system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate1 $out/HsUnmappedReads/1/$prefix.1.fastq";
+		system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate1 $out/HsUnmappedReads/1/$prefix.1.fastq";
 
-	system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate2 $out/HsUnmappedReads/2/$prefix.2.fastq";
+		system "mv $out/STAR_out/Hs_$prefix.Unmapped.out.mate2 $out/HsUnmappedReads/2/$prefix.2.fastq";
 		
-	system "gzip $out/HsUnmappedReads/1/$prefix.1.fastq";
+		system "gzip $out/HsUnmappedReads/1/$prefix.1.fastq";
 		
-	system "gzip $out/HsUnmappedReads/2/$prefix.2.fastq";
+		system "gzip $out/HsUnmappedReads/2/$prefix.2.fastq";
 		
-#	my $pfalReads1 = "$out/HsUnmappedReads/1/$prefix.1.fastq.gz";
-#	my $pfalReads2 = "$out/HsUnmappedReads/2/$prefix.2.fastq.gz";
+		my $pfalReads1 = "$out/HsUnmappedReads/1/$prefix.1.fastq.gz";
+		my $pfalReads2 = "$out/HsUnmappedReads/2/$prefix.2.fastq.gz";
 
-#        system "STAR --runMode alignReads --genomeDir $GenomeDir --readFilesIn $pfalReads1 $pfalReads2 --readFilesCommand zcat --outSAMtype BAM Unsorted --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1200 --outFilterScoreMinOverLread 0 --outFilterMatchNminOverLread 0  --outFilterMatchNmin 30 --outFilterMismatchNmax 10 --outFileNamePrefix $out/STAR_out/Pf_$prefix.";
+       	system "STAR --runMode alignReads --genomeDir $GenomeDir --readFilesIn $pfalReads1 $pfalReads2 --readFilesCommand zcat --outSAMtype BAM Unsorted --outSAMstrandField intronMotif --runThreadN 12 --alignIntronMin 5 --alignIntronMax 1200 --outFilterScoreMinOverLread 0 --outFilterMatchNminOverLread 0  --outFilterMatchNmin 30 --outFilterMismatchNmax 10 --outFileNamePrefix $out/STAR_out/Pf_$prefix.";
+
+		system "samtools sort -o $out/sort_bam/$prefix.sort.bam $out/bam/$prefix.bam";
 
  #       system "mv $out/STAR_out/Pf_$prefix.Aligned.sortedByCoord.out.bam $out/sort_bam/$prefix.sort.bam";
         

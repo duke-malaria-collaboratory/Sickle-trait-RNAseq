@@ -13,8 +13,8 @@ my $out = $ARGV[1];
 my $pair1 = $ARGV[2];
 my $pair2 = $ARGV[3];
 my $Hs_genome = $ARGV[4];
-my $Hs_transcriptome = $ARGV[4];
-my $GTF = $ARGV[5];
+my $Hs_transcriptome = $ARGV[5];
+my $GTF = $ARGV[6];
 
 chomp $GenomeDir;
 if ( -d $GenomeDir )

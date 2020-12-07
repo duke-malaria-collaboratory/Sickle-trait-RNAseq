@@ -35,10 +35,10 @@ chomp $GTF;
 
 my @PairedReadfiles1 = ();
 my @PairedReadfiles2 = ();
-#my $trim1;
-#my $trim2;
-#my @trimReads1 = ();
-#my @trimReads2 = ();
+my $trim1;
+my $trim2;
+my @trimReads1 = ();
+my @trimReads2 = ();
 
 chomp $pair1;
 
@@ -47,12 +47,12 @@ chomp $pair2;
 @PairedReadfiles1 = getReads("$pair1");
 @PairedReadfiles2 = getReads("$pair2");
 
-#QCreads("$pair1", "$pair2", "$out", \@PairedReadfiles1, \@PairedReadfiles2, "fastq");
+QCreads("$pair1", "$pair2", "$out", \@PairedReadfiles1, \@PairedReadfiles2, "fastq");
 
-#($trim1, $trim2) = trimReads("$pair1", "$pair2", "$out", \@PairedReadfiles1, \@PairedReadfiles2);
+($trim1, $trim2) = trimReads("$pair1", "$pair2", "$out", \@PairedReadfiles1, \@PairedReadfiles2);
 
-#@trimReads1 = getReads("$trim1");
-#@trimReads2 = getReads("$trim2");
+@trimReads1 = getReads("$trim1");
+@trimReads2 = getReads("$trim2");
 
 align($GenomeDir, "$pair1", "$pair2", "$out", "$Hs", "$GTF", \@PairedReadfiles1, \@PairedReadfiles2);
 

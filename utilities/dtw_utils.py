@@ -405,3 +405,21 @@ def dtw_df_unscaled(ts1, ts2, time_points, comp):
     df = df.set_index('ORF')
     df = df.drop(labels = 'path', axis = 1)
     return df
+
+def get_ts_mean(strain):
+
+    AA_df = mean_data_df.filter(regex='(AA.*{})'.format(strain))
+    AA_df.columns = time_points
+
+    AS_df = mean_data_df.filter(regex='(AS.*{})'.format(strain))
+    AS_df.columns = time_points
+
+    return(AA_df, AS_df)
+
+def calcCorr(data1, data2, description):
+    x = data1.to_numpy()
+    y = data2.to_numpy()
+    print ("Spearman and Pearson correlations for {}".format(description))
+    print(scipy.stats.spearmanr(x, y))
+    pearson = scipy.stats.pearsonr(x, y)
+    print("Pearson: {}\n".format(pearson)) 

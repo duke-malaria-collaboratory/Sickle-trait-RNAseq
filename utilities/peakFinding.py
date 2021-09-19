@@ -29,6 +29,7 @@ def kruskal_wallis(df):
     return kw_data_df, H, p
 
 def getIsolate(time_series, rgx):
+    #Returns data frame of expression data for a given sample in time series
     df = time_series.filter(regex=rgx)
     time_points = list(range(3, 51, 3))
     df.columns = time_points
@@ -52,27 +53,62 @@ def onePeakGenes(df, threshold, distance, peak_width, peak_prominence):
     return orf_list
 
 def make_peak_df(strain_ts, ts1_regex, ts1_id, ts2_regex, ts2_id, timepoints):
+    # Isolate TPMs for sample 1
     ts1 = getIsolate(strain_ts, ts1_regex)
+    # Isolate TPMs for sample 2
     ts2 = getIsolate(strain_ts, ts2_regex)
+    
+    #Rename columns for each sample time series to time points
     ts1.columns = timepoints
     ts2.columns = timepoints
+    
+    #Create empty dataframe with names of samples 1 and 2
     new_df = pd.DataFrame(columns = [ts1_id, ts2_id]) 
+    
+    #Populate each column with the time point of max expression
+    #    per transcript
     new_df[ts1_id] = ts1.idxmax(axis=1)
     new_df[ts2_id] = ts2.idxmax(axis=1)
+    
+    # Return dataframe with time points of max expression
+    #   for each transcript in the two samples
     return new_df
 
 def calc_peak_change(dataframe, col1, col2):
+    # Create empty dataframes for each transformation
+    
     counts = pd.DataFrame()
+    
     counts_agg = pd.DataFrame()
     counts_trans = pd.DataFrame()
     dataframe_norm = pd.DataFrame()
     
+    # Create column that will capture the time shift between max expression
+    #   for each transcript between the two samples being compared
     dataframe['peak_time_change'] = dataframe[col1] - dataframe[col2]
+    
+    # Restrict the analysis to time points that are not the first and last,
+    #    as many transcripts are highly expressed at the first and last
+    #    time points and do not reflect significant peak shifts
     dataframe = dataframe[abs(dataframe['peak_time_change']) < 45]
     
+    # For each time point, calculate the time shift between peaks of the two samples using sample 1 as a reference point, 
+    # and aggregate the counts to determine the number of transcripts for each peak shift.
+
+    
     counts = dataframe.groupby([col1, 'peak_time_change']).peak_time_change.agg('count').to_frame('Percent of transcripts').reset_index()
+    
+    #Create a dataframe that is grouped by each time point and peak shift, with the number of transcripts for each
+    #    group in the column
     counts_agg = counts.groupby([col1, 'peak_time_change']).agg({'Percent of transcripts': 'sum'})
+    
+    # Create a dataframe to contain the total number of trnascripts that peak at each time point.
+    # This will be used to normalize the peak shifts for each time point
     counts_trans = counts.groupby([col1]).agg({'Percent of transcripts': 'sum'})
+    
+    # Divide the aggregated and grouped data by the total count of transcripts
+    # to determine time shifts as a percentage of the total shifts
+    # per time point    
     dataframe_norm = counts_agg.div(counts_trans, level = col1) * 100
     dataframe_norm = dataframe_norm.reset_index()
     return dataframe, dataframe_norm
